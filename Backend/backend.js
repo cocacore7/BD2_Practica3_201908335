@@ -21,8 +21,8 @@ let q2 = client.execute(rep2,['1979-1980','Zaragoza']).then(result =>{
 });
 
 //Revisar
-let rep3 = 'SELECT * FROM practica.rep3 WHERE temporada=? AND equipo1=? AND equipo2=?';
-let q3 = client.execute(rep3,['1979-1980','Zaragoza','Zaragoza']).then(result =>{
+let rep3 = 'SELECT * FROM practica.rep3 WHERE temporada=? AND equipo1 IN (?, ?) AND equipo2 IN (?, ?)';
+let q3 = client.execute(rep3,['1979-1980','Zaragoza','Zaragoza','Zaragoza','Zaragoza']).then(result =>{
     result.forEach(row => {
         console.log("Marcador final: "+row.temporada+", "+row.jornada+", "+row.equipo1+", "+row.equipo2+", "+row.goles1+", "+row.goles2);}).catch((err)=>{console.log('Error Marcador Final',err);
     });
